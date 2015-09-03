@@ -77,8 +77,8 @@ namespace SafariRipper
         private string GetHtmlFromJson(string json)
         {
             var anonType = new { content = "" };
-            var chapter = JsonConvert.DeserializeAnonymousType(json, anonType);
-            var html = chapter.content;
+            var chapter = JsonConvert.DeserializeAnonymousType(json.Substring(1, json.Length - 2), anonType);
+            var html = chapter.content.Replace(@"\u00a", string.Empty);
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
 
@@ -138,17 +138,15 @@ namespace SafariRipper
         private void InitializeHtmlFile()
         {
             _htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            _htmlDoc.LoadHtml("<!doctype html><html><head><title></title></head><body>\r\n<p>hey</p>\r\n</body></html>");
+            var html = "<!doctype html><html><head><title></title>{0}</head><body></body></html>";
+            html = string.Format(html, Css.GetCssText());
+            _htmlDoc.LoadHtml(html);
         }
 
 
         private void AppendToHtml(string html)
         {
-            var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(html);
-            var htmlToAppend = doc.DocumentNode.SelectSingleNode("//body").InnerHtml 
-                + "\r\n\r\n<div style=\"page-break-after: always\"></div>\r\n\r\n";
-
+            var htmlToAppend = html + "\r\n\r\n<div style=\"page-break-after: always\"></div>\r\n\r\n";
             _htmlDoc.DocumentNode.SelectSingleNode("//body").InnerHtml += htmlToAppend;
         }
 
