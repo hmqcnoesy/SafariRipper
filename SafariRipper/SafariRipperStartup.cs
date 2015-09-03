@@ -121,6 +121,9 @@ namespace SafariRipper
                 }
 
                 src.Value = _oldAndNewImageUrls[src.Value];
+
+                if (img.Attributes["width"] != null) img.Attributes.Remove("width");
+                if (img.Attributes["height"] != null) img.Attributes.Remove("height");
             }
         }
 
@@ -138,7 +141,7 @@ namespace SafariRipper
         private void InitializeHtmlFile()
         {
             _htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            var html = "<!doctype html><html><head><title></title>{0}</head><body></body></html>";
+            var html = "<!doctype html><html><head><meta charset=\"utf-8\"><title>SafariRipper</title>{0}</head><body></body></html>";
             html = string.Format(html, Css.GetCssText());
             _htmlDoc.LoadHtml(html);
         }

@@ -494,6 +494,8 @@ namespace SafariRipper
                     }
 
                     .FontName1 { font-family: Consolas; }
+
+                    #cover-image img { width: 100% }
                 </style>";
         }
     }
