@@ -17,15 +17,27 @@ namespace SafariRipper
 						background-color: white;
 						color: black;
 						padding: 0;
-						margin: 0;
+						margin: 2.5em;
 					}
 
-                    #cover-image img, #Cover~img { width: 100% }
+                    #cover-image img, #Cover~img { 
+						width: 100% 
+					}
 					
 					a {
                       color: #2a6496;
                       text-decoration: underline;
                     }
+					
+					img {
+						display: block;
+						margin-left: auto;
+						margin-right: auto;
+					}
+					
+					.bullet img, .bullet1 img {
+						display: inline;
+					}
 					
                     h1, .h1,
                     h2, .h2,
@@ -91,18 +103,12 @@ namespace SafariRipper
                       border-radius: 0.4em;
                       overflow: auto;
                       word-wrap: normal;
-                        white-space: pre-wrap;       /* CSS 3 */
-                        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-                        white-space: -pre-wrap;      /* Opera 4-6 */
-                        white-space: -o-pre-wrap;    /* Opera 7 */
-                        word-wrap: break-word;       /* Internet Explorer 5.5+ */
                     }
                     pre code
                     {
                         padding: 0;
                         font-size: inherit;
                         color: inherit;
-                        white-space: pre-wrap;
                         background-color: transparent;
                         border-radius: 0;
                     }
@@ -134,6 +140,20 @@ namespace SafariRipper
                     table tr:nth-child(odd) > td {
                       background-color: #f9f9f9;
                     }
+					
+					@media print {
+						body { margin: 0; }
+						pre {
+							white-space: pre-wrap;       /* CSS 3 */
+							white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+							white-space: -pre-wrap;      /* Opera 4-6 */
+							white-space: -o-pre-wrap;    /* Opera 7 */
+							word-wrap: break-word;       /* Internet Explorer 5.5+ */
+						}
+						pre code {
+							white-space: pre-wrap;
+						}
+					}
                 </style>";
         }
     }
