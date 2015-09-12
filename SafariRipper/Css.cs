@@ -10,17 +10,17 @@ namespace SafariRipper
         public static string GetCssText()
         {
             return @"
-                <style>	
+                <style>		
                     body {
 						font-family: Georgia, Palatino, serif;
 						font-size: 18pt;
 						background-color: white;
 						color: black;
 						padding: 0;
-						margin: 2.5em;
+						margin: 0;
 					}
 
-                    #cover-image img, #Cover~img { 
+                    #cover-image img, #Cover~img, .cover img { 
 						width: 100% 
 					}
 					
@@ -29,32 +29,27 @@ namespace SafariRipper
                       text-decoration: underline;
                     }
 					
-					img {
-						display: block;
-						margin-left: auto;
-						margin-right: auto;
-					}
-					
 					.bullet img, .bullet1 img {
 						display: inline;
 					}
 					
-                    h1, .h1,
-                    h2, .h2,
-                    h3, .h3,
-                    h4, .h4,
-                    h5, .h5,
-                    h6, .h6,
+                    h1, .h1, .Heading1, .ChapterNumber,
+                    h2, .h2, .Heading2, .ChapterTitle,
+                    h3, .h3, .Heading3,
+                    h4, .h4, .Heading4,
+                    h5, .h5, .Heading5,
+                    h6, .h6, .Heading6,
 					.chaptertitle,
 					.chapterobjectivetitle {
                       font-family: Helvetica,Arial,sans-serif;
 					  padding-top: 1em;
+					  font-weight: bold;
                     }
 					
-                    h1, .h1, .chaptertitle {
+                    h1, .h1, .chaptertitle, .Heading1, .ChapterNumber {
                       font-size: 150%;
                     }
-					h2, .h2, .chapterobjectivetitle {
+					h2, .h2, .chapterobjectivetitle, .Heading2, .ChapterTitle {
 						font-size: 120%;
 					}
 					
@@ -103,12 +98,18 @@ namespace SafariRipper
                       border-radius: 0.4em;
                       overflow: auto;
                       word-wrap: normal;
+                        white-space: pre-wrap;       /* CSS 3 */
+                        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                        white-space: -pre-wrap;      /* Opera 4-6 */
+                        white-space: -o-pre-wrap;    /* Opera 7 */
+                        word-wrap: break-word;       /* Internet Explorer 5.5+ */
                     }
                     pre code
                     {
                         padding: 0;
                         font-size: inherit;
                         color: inherit;
+                        white-space: pre-wrap;
                         background-color: transparent;
                         border-radius: 0;
                     }
@@ -140,20 +141,6 @@ namespace SafariRipper
                     table tr:nth-child(odd) > td {
                       background-color: #f9f9f9;
                     }
-					
-					@media print {
-						body { margin: 0; }
-						pre {
-							white-space: pre-wrap;       /* CSS 3 */
-							white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-							white-space: -pre-wrap;      /* Opera 4-6 */
-							white-space: -o-pre-wrap;    /* Opera 7 */
-							word-wrap: break-word;       /* Internet Explorer 5.5+ */
-						}
-						pre code {
-							white-space: pre-wrap;
-						}
-					}
                 </style>";
         }
     }
