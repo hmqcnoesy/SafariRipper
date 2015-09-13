@@ -67,11 +67,13 @@ namespace SafariRipper
                     kbd,
                     pre,
                     samp,
-					.inlinecode {
+					.inlinecode,
+					.FontName1 {
                       font-family: Consolas, Menlo, Monaco, Courier New, monospace;
                     }
                     code,
-					.inlinecode {
+					.inlinecode,
+					p .FontName1 {
                       padding: 2px 4px;
                       font-size: 90%;
                       background-color: rgba(0,0,0,0.08);
