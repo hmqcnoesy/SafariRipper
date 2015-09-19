@@ -20,7 +20,7 @@ namespace SafariRipper
 						margin: 0;
 					}
 
-                    #cover-image img, #Cover~img, .cover img { 
+                    #cover-image img, #Cover~img, .cover img, img[alt=cover] { 
 						width: 100% 
 					}
 					
